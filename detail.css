@@ -1,0 +1,23 @@
+body {
+  background-color: #1a1c20;
+  color: white;
+  padding: 20px;
+}
+
+.img-logo {
+  width: 300px;
+}
+
+h1 {
+  font-size: 200px;
+}
+
+.poster {
+  width: 500px;
+  height: 400px;
+  background-color: antiquewhite;
+}
+.btn {
+  width: 100px;
+  height: 50px;
+}
