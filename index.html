@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="muzi55" />
+    <meta name="description" content="영화 사이트 입니다." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+    <!-- http://ogp.me/ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Muzi_web" />
+    <meta property="og:title" content="영화 설명사이트" />
+    <meta property="og:description" content="무지의 영화리뷰 사이트" />
+    <meta property="og:image" content="https://image.tmdb.org/t/p/w500" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="stylesheet" href="main.css" />
+
+    <title>조촐한 영화관</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="section">
+        <header>
+          <h1 class="hidden">Muzi_Movies</h1>
+          <form action="#" id="search_bar">
+            <input type="text" id="search" placeholder="Search" />
+            <label class="hidden" for="serach">검색</label>
+            <button>검색</button>
+          </form>
+          <nav>
+            <ul>
+              <li><a href="#">Top Releases</a></li>
+            </ul>
+          </nav>
+          <div class="toggle_btn">
+            <img src="https://i.postimg.cc/y8rMmGz3/icons8-50.png" alt="토글 버튼" />
+          </div>
+          <div class="last_activity">
+            <ul>
+              <li>영화 평균 점수</li>
+            </ul>
+          </div>
+        </header>
+        <section class="releases">
+          <h2>Top Releases</h2>
+          <div class="movie_cards">
+            <ul></ul>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script lang="javascript" src="main.js"></script>
+  </body>
+</html>
