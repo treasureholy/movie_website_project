@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>review</title>
   <link href="/review.css" rel="stylesheet" />
-  <script src="/review.js" defer></script>
+  <script src="/src/review.js" defer></script>
 </head>
 
 <body>
-  <section>
+  <section class="review_section">
     <form class="_content">
       <div class="area_input_box">
-        <input type="text" class="write_input" placeholder="감상평을 등록해주세요.">
+        <input type="text" class="write_input" placeholder="감상평을 등록해주세요." required>
         <button type="submit" class="write_button">등록</button>
         <div class="user_info">
-          <input type="text" class="user_name" placeholder="닉네임">
-          <input type="password" class="user_password" placeholder="비밀번호">
+          <input type="text" class="user_name" placeholder="닉네임" required>
+          <input type="password" class="user_password" placeholder="비밀번호" required>
         </div>
       </div>
     </form>
