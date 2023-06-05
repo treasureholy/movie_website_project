@@ -5,7 +5,11 @@ window.addEventListener("load", () => {
     if (typeof selector !== "string" || selector.trim().length === 0) {
       return null;
     }
-    context = !context ? document : context.nodeType === 1 ? context : el(String(context));
+    context = !context
+      ? document
+      : context.nodeType === 1
+      ? context
+      : el(String(context));
     return context.querySelectorAll(selector);
   }
 
@@ -13,7 +17,11 @@ window.addEventListener("load", () => {
     if (typeof selector !== "string" || selector.trim().length === 0) {
       return null;
     }
-    context = !context ? document : context.nodeType === 1 ? context : el(String(context));
+    context = !context
+      ? document
+      : context.nodeType === 1
+      ? context
+      : el(String(context));
     return context.querySelector(selector);
   }
 
@@ -32,7 +40,10 @@ window.addEventListener("load", () => {
     },
   };
 
-  fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options)
+  fetch(
+    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+    options
+  )
     .then((response) => response.json())
     .then((response) => {
       let movies = response.results;
@@ -65,10 +76,17 @@ window.addEventListener("load", () => {
         return average_rating;
       });
 
-      const avg = average_rating.reduce((accumulator, current, index, array) => {
-        return index === array.length - 1 ? (accumulator + current) / array.length : accumulator + current;
-      }, 0);
-      el(".last_activity ul li:nth-child(1)").innerText = `영화 평균 점수 ${avg}`;
+      const avg = average_rating.reduce(
+        (accumulator, current, index, array) => {
+          return index === array.length - 1
+            ? (accumulator + current) / array.length
+            : accumulator + current;
+        },
+        0
+      );
+      el(
+        ".last_activity ul li:nth-child(1)"
+      ).innerText = `영화 평균 점수 ${avg}`;
     })
 
     .catch((err) => console.error(err));
