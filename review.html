@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./style/review.css" rel="stylesheet" />
+    <title>리뷰작성</title>
+  </head>
+  <body>
+    <div class="my_comment">
+      <form action="process_form.php" method="POST">
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="comment">댓글:</label>
+        <input type="text" id="comment" name="comment" required />
+
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required />
+
+        <input type="submit" value="제출" />
+      </form>
+    </div>
+    <script src="./src/review.js"></script>
+  </body>
+</html>
