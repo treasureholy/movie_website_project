@@ -1,4 +1,34 @@
 window.addEventListener("load", () => {
+  const main = document.querySelector("main");
+  //* 경로에 맞는 콘텐츠 렌더
+  const renderContents = () => {
+    const { pathname } = window.location;
+    console.log(pathname);
+    switch (pathname) {
+      case "/569094":
+        main.innerHTML = `<div><h1>some Contents</h1></div>`;
+        break;
+      default:
+        main.innerHTML = "<div>404</div>";
+    }
+  };
+
+  const handleLocationChange = (e) => {
+    const { href } = e.detail;
+    console.log(href);
+    //* 주소변경
+    window.history.pushState(undefined, "타이틀", href);
+    renderContents();
+  };
+
+  //* locationchange 이벤트리스너
+  window.addEventListener("locationchange", handleLocationChange);
+
+  // road focus
+  window.onload = function () {
+    el("#search").focus();
+  };
+
   // 선택자 함수
 
   function els(selector, context) {
@@ -16,11 +46,6 @@ window.addEventListener("load", () => {
     context = !context ? document : context.nodeType === 1 ? context : el(String(context));
     return context.querySelector(selector);
   }
-
-  // road focus
-  window.onload = function () {
-    el("#search").focus();
-  };
 
   // api
   const options = {
@@ -52,9 +77,16 @@ window.addEventListener("load", () => {
         // <div class="movie_img" style=
         // "background: url('https://image.tmdb.org/t/p/w300${movies[i].backdrop_path}') bottom center"
         // "background-size="cover"></div>
+
         el(".movie_cards ul").insertAdjacentHTML("beforeend", template);
+
         els(".movie_cards ul li")[i].addEventListener("click", () => {
-          alert(`이 영화의 ID는 ? => ${movies[i].id}`);
+          const locationChangeEvent = new CustomEvent("locationchange", {
+            composed: true,
+            detail: { href: `${movies[i].id}` },
+          });
+
+          window.dispatchEvent(locationChangeEvent);
         });
       }
 
