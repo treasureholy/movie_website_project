@@ -1,23 +1,76 @@
-body {
+:root {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+* {
+  background: #1a1c20;
+  color: #efe;
+  margin: 0;
+  padding: 0;
+  /* background: #000; */
+  box-sizing: border-box;
+}
+.main {
+  justify-content: space-between;
+  width: 100%;
+}
+#homeBtn {
+  font-family: "KBO-Dia-Gothic_bold";
+  border: 4px dotted #efe;
+  /* color: #efe; */
+  background: #1a1c20;
+  cursor: pointer;
+  margin: 20px;
+}
+.wrapper {
+  /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-gap: 15px; */
+  font-family: "KOTRAHOPE";
+  font-size: large;
+  margin: 10px;
+  display: flex;
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  /* justify-content: space-around; */
+}
+.title {
+  margin-bottom: 10px;
+}
+.genres {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.genre {
   background-color: #1a1c20;
-  color: white;
-  padding: 20px;
+  border: 2px solid #efe;
+  margin-right: 7px;
+  border-radius: 6px;
+  padding: 2px;
 }
-
-.img-logo {
-  width: 300px;
+.video {
+  font-family: "KOTRAHOPE";
+  font-size: 25px;
+  background-color: #efe;
+  color: #000;
+  width: 250px;
+  height: 70px;
+  text-align: center;
+  line-height: 66px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #000;
+  border-radius: 6px;
+  cursor: pointer;
 }
-
-h1 {
-  font-size: 200px;
+.movieWrapper {
+  width: 700px;
+  margin-right: 5px;
 }
-
+.posterWrapper {
+  border-radius: 8px;
+}
 .poster {
   width: 500px;
-  height: 400px;
-  background-color: antiquewhite;
-}
-.btn {
-  width: 100px;
-  height: 50px;
+  height: 200px;
 }
