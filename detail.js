@@ -33,9 +33,7 @@ const clickBtn = async () => {
     const videoKey = trailer.key;
     const videoUrl = `https://www.youtube.com/embed/${videoKey}?autoplay=1&rel=0`;
     poster.innerHTML = `
-   
-      <iframe width="500" height="300" src="${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
- 
+      <iframe width="900" height="500" src="${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     `;
   }
 };
@@ -44,26 +42,48 @@ const clickBtn = async () => {
 const makeTemp = async () => {
   const movies = await movieFetch();
   const movieData = movies[0];
+  let {
+    title,
+    genres,
+    production_companies,
+    vote_average,
+    overview,
+    poster_path,
+  } = movieData;
   let template = `
   <div class="movieWrapper">
-      <div class="title"><h1>${movieData.title}</h1></div>
+      <div class="title"><h1>${title}</h1></div>
       <div class="genres">
       ${((item) => {
         return item.map((x) => `<span class="genre">${x.name}</span>`).join("");
-      })(movieData.genres)}
+      })(genres)}
       </div>
-      <button class="video" onclick="clickBtn()">예고편 미리보기</button>
-      <div class="overview">${movieData.overview}</div>
-      <div class="rating"> ${"평점 : " + movieData.vote_average}</div>
+      <div class="player">
+      <button class="video" onclick="clickBtn()"><i class="fa-sharp fa-solid fa-play play-icon"></i>예고편 시청하기</button>
+      <i class="fa-regular fa-heart heart-icon" onclick="clickHeart()"></i>
+      </div>
+      <div class="movieInfo">
+        <h3 class="director">제작 : 
+
+        ${
+          production_companies[0] ? movieData.production_companies[0].name : ""
+        }</h3>
+        <h3>평점 : ${vote_average.toFixed(1)}</h3>
+        <h3 class="overview">${overview}</h3>
+        <h3 class="rating"></h3>
+      </div>
   </div>
   <div class="posterWrapper">
-  <img src="https://image.tmdb.org/t/p/w500${
-    movieData.backdrop_path
-  }" alt="영화 포스트">
+  <img class="posterImage" src="https://image.tmdb.org/t/p/w400${poster_path}" alt="영화 포스트">
 </div>`;
   document
     .getElementById("wrapperId")
     .insertAdjacentHTML("beforeend", template);
+};
+
+const clickHeart = () => {
+  let heartIcon = document.querySelector(".heart-icon");
+  heartIcon.classList.toggle("red-heart");
 };
 
 makeTemp();
