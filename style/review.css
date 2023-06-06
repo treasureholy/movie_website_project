@@ -1,6 +1,6 @@
 /* 댓글 쓰기 */
 .input-box {
-  width: 320px;
+  width: 400px;
   height: 200px;
   background-color: black;
   padding: 10px 20px 10px 5px;
@@ -13,9 +13,11 @@ label[for="name"] {
   color: white;
 }
 #name {
-  width: 80px;
+  width: 110px;
   height: 30px;
   font-size: 20px;
+  margin-right: 23px;
+  padding-left: 10px;
 }
 
 label[for="password"] {
@@ -23,9 +25,10 @@ label[for="password"] {
   color: white;
 }
 #password {
-  width: 80px;
+  width: 100px;
   height: 30px;
   font-size: 20px;
+  padding-left: 10px;
 }
 
 label[for="comment"] {
@@ -33,16 +36,24 @@ label[for="comment"] {
   color: white;
 }
 #comment {
-  width: 255px;
+  width: 335px;
   height: 80px;
   font-size: 18px;
+  padding-left: 10px;
 }
 
+/* 댓글 저장 버튼 */
+input[type="submit"] {
+  cursor: pointer;
+  width: 50px;
+  height: 30px;
+  background-color: white;
+}
 /* 저장된 댓글 */
 .comment {
   background-color: black;
   color: white;
-  width: 320px;
+  width: 400px;
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -51,4 +62,6 @@ label[for="comment"] {
 
 .comment button {
   float: right;
+  cursor: pointer;
+  background-color: white;
 }

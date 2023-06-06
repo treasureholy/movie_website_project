@@ -36,6 +36,25 @@ let loadComments = () => {
     let commentText = document.createElement("span"); // <div> 요소에 댓글내용 <span>요소를 자식으로 추가)
     commentText.innerHTML = "<b>" + comment.name + "</b> : " + comment.comment;
 
+    // 수정 삭제 버튼 추가
+    let editButton = document.createElement("button");
+    editButton.innerHTML = "수정";
+    editButton.addEventListener("click", function () {
+      let password = prompt("비밀번호를 입력하세요.");
+
+      if (password !== null && password === comment.password) {
+        let newComment = prompt(
+          "수정할 댓글 내용을 입력하세요.",
+          comment.comment
+        );
+        if (newComment !== null) {
+          editComment(index, newComment);
+        }
+      } else {
+        alert("비밀번호가 일치하지 않습니다.");
+      }
+    });
+
     // 댓글 삭제 버튼 추가
     let deleteButton = document.createElement("button");
     deleteButton.innerHTML = "삭제";
@@ -53,8 +72,19 @@ let loadComments = () => {
 
     commentElement.appendChild(commentText);
     commentElement.appendChild(deleteButton);
+    commentElement.appendChild(editButton);
     commentContainer.appendChild(commentElement); // 댓글 요소를 댓글 컨테이너에 추가
   });
+};
+
+// 댓글 수정 함수
+let editComment = (index, newComment) => {
+  let comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+  comments[index].comment = newComment;
+
+  localStorage.setItem("comments", JSON.stringify(comments));
+  loadComments();
 };
 
 // 댓글 삭제 함수
