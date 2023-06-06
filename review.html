@@ -9,16 +9,20 @@
   </head>
   <body>
     <div class="my_comment">
-      <form onsubmit="saveComment(name.value, comment.value, password.value);">
-        <label for="name">이름:</label>
-        <input type="text" id="name" required />
-
-        <label for="comment">리뷰:</label>
-        <input type="text" id="comment" required />
-
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" required />
-
+      <form
+        class="input-box"
+        onsubmit="saveComment(name.value, comment.value, password.value);"
+      >
+        <p>
+          <label for="name">이름:</label>
+          <input type="text" id="name" required />
+          <label for="password">비밀번호:</label>
+          <input type="password" id="password" required />
+        </p>
+        <p>
+          <label for="comment">리뷰:</label>
+          <input type="text" id="comment" required />
+        </p>
         <input type="submit" value="등록" />
       </form>
     </div>

@@ -1,0 +1,50 @@
+/* 댓글 쓰기 */
+.input-box {
+  width: 320px;
+  height: 200px;
+  background-color: black;
+  padding: 10px 20px 10px 5px;
+  border-radius: 10px;
+  text-align: right;
+}
+
+label[for="name"] {
+  font-size: 18px;
+  color: white;
+}
+#name {
+  width: 80px;
+  height: 30px;
+  font-size: 20px;
+}
+
+label[for="password"] {
+  font-size: 18px;
+  color: white;
+}
+#password {
+  width: 80px;
+  height: 30px;
+  font-size: 20px;
+}
+
+label[for="comment"] {
+  font-size: 18px;
+  color: white;
+}
+#comment {
+  width: 255px;
+  height: 80px;
+  font-size: 18px;
+}
+
+/* 저장된 댓글 */
+.comment {
+  background-color: black;
+  color: white;
+  width: 320px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
