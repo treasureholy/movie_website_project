@@ -120,6 +120,7 @@ header .toggle_btn img {
 }
 header .last_activity {
   margin-top: 20px;
+  margin-bottom: 80px;
 }
 header .last_activity li {
   font-size: 12px;
@@ -303,6 +304,7 @@ header .last_activity li {
     display: none;
   }
 }
+
 @media (max-width: 700px) {
   .releases .movie_cards ul {
     display: -webkit-box;
@@ -341,4 +343,38 @@ header .last_activity li {
     margin-bottom: 20px;
     line-height: 1.5;
   }
+}
+.likes_wrap {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.likeMovie {
+  border: 1px solid gainsboro;
+  margin-bottom: 10px;
+}
+
+/* [페이지 상단으로 이동] */
+.moveTopBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background-image: url("../assets/화살표.png");
+  background-size: cover;
+  cursor: pointer;
+}
+
+/* [페이지 상단으로 이동] */
+.moveTopBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background-image: url("../assets/화살표.png");
+  background-size: cover;
+  cursor: pointer;
 }
