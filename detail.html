@@ -1,56 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./detail.css" />
-    <script
-      src="https://kit.fontawesome.com/35e904484f.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>MovieDetail</title>
-  </head>
-  <body>
-    <div class="main">
-      <div class="logo">
-        <a href="./index.html"
-          ><button id="homeBtn"><h2>조촐한 영화관</h2></button></a
-        >
-      </div>
-      <div class="wrapper" id="wrapperId"></div>
-      <section class="review_section">
-        <form class="_content">
-          <div class="area_input_box">
-            <input
-              type="text"
-              class="write_input"
-              placeholder="감상평을 등록해주세요."
-              required
-            />
-            <button type="submit" class="write_button">등록</button>
-            <div class="user_info">
-              <input
-                type="text"
-                class="user_name"
-                placeholder="닉네임"
-                required
-              />
-              <input
-                type="password"
-                class="user_password"
-                placeholder="비밀번호"
-                required
-              />
-            </div>
-          </div>
-        </form>
-        <div class="review_list">
-          <ul class="item_wrapper"></ul>
-        </div>
-      </section>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style/detail.css" />
+  <script src="https://kit.fontawesome.com/35e904484f.js" crossorigin="anonymous"></script>
+  <title>MovieDetail</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="logo">
+      <a href="./index.html"><button id="homeBtn">
+          <h2>조촐한 영화관</h2>
+        </button></a>
     </div>
-    <script src="detail.js"></script>
-    <script src="review.js"></script>
-  </body>
+    <div class="wrapper" id="wrapperId"></div>
+    <section class="review_section">
+      <form class="_content">
+        <div class="area_input_box">
+          <input type="text" class="write_input" placeholder="감상평을 등록해주세요." required />
+          <button type="submit" class="write_button">등록</button>
+          <div class="user_info">
+            <input type="text" class="user_name" placeholder="닉네임" required />
+            <input type="password" class="user_password" placeholder="비밀번호" required />
+          </div>
+        </div>
+      </form>
+      <div class="review_list">
+        <ul class="item_wrapper"></ul>
+      </div>
+    </section>
+  </div>
+  <script src="./src/detail.js"></script>
+  <script src="./src/review.js"></script>
+</body>
+
 </html>
