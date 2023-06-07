@@ -6,6 +6,8 @@ window.onload = function () {
   const $user_password = document.querySelector(".user_password");
   const $like_sort = document.querySelector(".like_sort");
   const $time_sort = document.querySelector(".time_sort");
+  let urlParams = new URLSearchParams(window.location.search);
+  let movieId = urlParams.get("id");
 
   let selectId = null;
   let method = "submit";
@@ -45,6 +47,7 @@ window.onload = function () {
         text,
         password,
         date: date.toLocaleString("ko-kr"),
+        movieId,
       };
       const objString = JSON.stringify(obj);
       localStorage.setItem(`${name}`, objString);
@@ -82,6 +85,11 @@ window.onload = function () {
     }
 
     // 데이터 정렬 및 렌더링
+    reviews = reviews.filter((review) => {
+      urlParams = new URLSearchParams(window.location.search);
+      movieId = urlParams.get("id");
+      return review.movieId === movieId;
+    });
 
     let sort = "";
     if (sortWay === "like") sort = "likeCount";
