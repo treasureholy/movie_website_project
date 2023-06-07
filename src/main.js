@@ -54,7 +54,6 @@ window.addEventListener("load", () => {
       // els(".movie_cards ul li").forEach((li) => li.remove());
       likes.forEach((likeMovie) => {
         let like_movie = movies.filter((movie) => movie.id == likeMovie);
-        console.log(like_movie);
         let template = `<a href="detail.html?id=${likeMovie}"><li class="likeMovie">${like_movie[0].title}</li></a>`;
         likes_wrap.insertAdjacentHTML("beforeend", template);
       });
