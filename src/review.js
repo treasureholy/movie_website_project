@@ -187,7 +187,6 @@ window.onload = function () {
       });
     });
   }
-
   getReviews();
 };
 
