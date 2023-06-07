@@ -394,3 +394,7 @@ dd {
     flex-basis: 100px;
   }
 }
+
+.hide {
+  display: none;
+}
