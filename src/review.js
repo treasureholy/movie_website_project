@@ -1,32 +1,30 @@
-// (기능 작성 순서)
-
-// 1. 처음 댓글 쓸때 스토리지에 기본카운터 0 지정해서 기본값으로 넣어주기
-// 2. 버튼이 눌린 댓글의 이벤트 타겟 값을 받아오기
-// 3. 좋아요 버튼 클릭시 이벤트 타겟 값을 이용해서 해당 count를 받아와서 1씩 증가 및 setitem으로 카운터 값 저장
-// 4. 눌렸을때만 임시로 텍스트를 변경해서 보여주기
-// 5. 새로고침시에는 자동으로 업데이트된 값으로 렌더링
-
-// 최신순, 인기순
-// 최신순 클릭 시 date 기준 내림차순 소팅
-// 인기순 클릭 시 like Count 기준 내림차순 소팅
-// default는 인기순
-
-// 영화별 상세페이지 첫 로딩 시 댓글창 먼저 실행되는 문제 해결 필요
-
 window.onload = function () {
   const $_content = document.querySelector("._content");
   const $item_wrapper = document.querySelector(".item_wrapper");
   const $write_input = document.querySelector(".write_input");
   const $user_name = document.querySelector(".user_name");
   const $user_password = document.querySelector(".user_password");
+  const $like_sort = document.querySelector(".like_sort");
+  const $time_sort = document.querySelector(".time_sort");
+
   let selectId = null;
   let method = "submit";
-
+  let sortWay = "like";
   function initInput() {
     $write_input.value = null;
     $user_name.value = null;
     $user_password.value = null;
   }
+
+  $like_sort.addEventListener("click", () => {
+    sortWay = "like";
+    getReviews();
+  });
+
+  $time_sort.addEventListener("click", () => {
+    sortWay = "time";
+    getReviews();
+  });
 
   // 댓글 입력창 기능 구현
   $_content.addEventListener("submit", (event) => {
@@ -84,12 +82,18 @@ window.onload = function () {
     }
 
     // 데이터 정렬 및 렌더링
+
+    let sort = "";
+    if (sortWay === "like") sort = "likeCount";
+    else if (sortWay === "time") sort = "date";
+
+    reviews = reviews.sort((a, b) => {
+      if (a[`${sort}`] < b[`${sort}`]) return 1;
+      else if (a[`${sort}`] === b[`${sort}`]) return 0;
+      else if (a[`${sort}`] > b[`${sort}`]) return -1;
+    });
+
     $item_wrapper.innerHTML = reviews
-      .sort((a, b) => {
-        if (a.date < b.date) return 1;
-        else if (a.date === b.date) return 0;
-        else if (a.date > b.date) return -1;
-      })
       .map((review) => {
         return `<li class="review_card">
                       <div class="review_content">${review.text}</div>
@@ -153,12 +157,6 @@ window.onload = function () {
       });
     });
   }
-
-  // 1. 처음 댓글 쓸때 스토리지에 기본카운터 0 지정해서 기본값으로 넣어주기
-  // 2. 버튼이 눌린 댓글의 이벤트 타겟 값을 받아오기
-  // 3. 좋아요 버튼 클릭시 이벤트 타겟 값을 이용해서 해당 count를 받아와서 1씩 증가 및 setitem으로 카운터 값 저장
-  // 4. 눌렸을때만 임시로 텍스트를 변경해서 보여주기
-  // 5. 새로고침시에는 자동으로 업데이트된 값으로 렌더링
 
   // 좋아요 기능
   function likeReview() {
