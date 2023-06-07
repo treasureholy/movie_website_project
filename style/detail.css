@@ -127,7 +127,7 @@ body {
 /* //////////////////// */
 
 .review_section {
-  margin-top: 100px;
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -397,4 +397,28 @@ dd {
 
 .hide {
   display: none;
+}
+
+/* [페이지 상단으로 이동] */
+.moveTopBtn2 {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background-image: url("./assets/화살표2.png");
+  background-size: cover;
+  cursor: pointer;
+}
+
+/* 리뷰창 띄우기 */
+.comment_input_container {
+  display: none;
+}
+.writeReviewBtn {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-left: 100px;
 }

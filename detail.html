@@ -18,27 +18,34 @@
         </button></a>
     </div>
     <div class="wrapper" id="wrapperId"></div>
-    <section class="review_section">
-      <form class="_content">
-        <div class="area_input_box">
-          <input type="text" class="write_input" placeholder="감상평을 등록해주세요." required />
-          <button type="submit" class="write_button">등록</button>
-          <div class="user_info">
-            <input type="text" class="user_name" placeholder="닉네임" required />
-            <input type="password" class="user_password" placeholder="비밀번호" required />
-          </div>
-        </div>
-      </form>
-      <hr />
 
-      <div class="review_list">
-        <div class="sort">
-          <button class="btn like_sort">인기순</button>
-          <button class="btn time_sort">최신순</button>
+    <!-- 댓글입력창 Review 버튼으로 감싸기 -->
+    <div class="comment_input_container">
+      <section class="review_section">
+        <form class="_content">
+          <div class="area_input_box">
+            <input type="text" class="write_input" placeholder="감상평을 등록해주세요." required />
+            <button type="submit" class="write_button">등록</button>
+            <div class="user_info">
+              <input type="text" class="user_name" placeholder="닉네임" required />
+              <input type="password" class="user_password" placeholder="비밀번호" required />
+            </div>
+          </div>
+        </form>
+        <div class="review_list">
+          <div class="sort">
+            <button class="btn like_sort">인기순</button>
+            <button class="btn time_sort">최신순</button>
+          </div>
+          <ul class="item_wrapper"></ul>
         </div>
-        <ul class="item_wrapper"></ul>
-      </div>
-    </section>
+      </section>
+    </div>
+    <button class="writeReviewBtn">Review</button>
+
+  </div>
+  <!-- 페이지 상단 이동 -->
+  <div class="moveTopBtn2"></div>
   </div>
   <script src="/src/detail.js"></script>
   <script src="/src/review.js"></script>
