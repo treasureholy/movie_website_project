@@ -1,3 +1,18 @@
+// (기능 작성 순서)
+
+// 1. 처음 댓글 쓸때 스토리지에 기본카운터 0 지정해서 기본값으로 넣어주기
+// 2. 버튼이 눌린 댓글의 이벤트 타겟 값을 받아오기
+// 3. 좋아요 버튼 클릭시 이벤트 타겟 값을 이용해서 해당 count를 받아와서 1씩 증가 및 setitem으로 카운터 값 저장
+// 4. 눌렸을때만 임시로 텍스트를 변경해서 보여주기
+// 5. 새로고침시에는 자동으로 업데이트된 값으로 렌더링
+
+// 최신순, 인기순
+// 최신순 클릭 시 date 기준 내림차순 소팅
+// 인기순 클릭 시 like Count 기준 내림차순 소팅
+// default는 인기순
+
+// 영화별 상세페이지 첫 로딩 시 댓글창 먼저 실행되는 문제 해결 필요
+
 window.onload = function () {
   const $_content = document.querySelector("._content");
   const $item_wrapper = document.querySelector(".item_wrapper");
@@ -27,6 +42,7 @@ window.onload = function () {
         return alert("비밀번호는 최소 4글자가 되어야 합니다.");
 
       const obj = {
+        likeCount: 0,
         name,
         text,
         password,
@@ -81,6 +97,10 @@ window.onload = function () {
                       <img data-id="${review.name}"class="edit_icon" src="assets/edit.png" alt="">
                       <dl class="upload_info">
                         <dd>${review.name}</dd>
+                        <div class="like">
+                        <img data-id="${review.name}"class="like_icon" src="assets/like.png" alt="">
+                        <p class="like_count">${review.likeCount}</p>
+                        </div>
                         <dd>${review.date}</dd>
                       </dl>
                     </li>`;
@@ -88,6 +108,7 @@ window.onload = function () {
       .join("");
     deleteReview();
     editReview();
+    likeReview();
   }
 
   // 삭제 기능
@@ -129,6 +150,26 @@ window.onload = function () {
         document.querySelector(".write_button").textContent = "수정";
         $write_input.focus();
         window.scrollTo(0, 0); // 스크롤이 아래 있을 때 수정창으로 바로 이동
+      });
+    });
+  }
+
+  // 1. 처음 댓글 쓸때 스토리지에 기본카운터 0 지정해서 기본값으로 넣어주기
+  // 2. 버튼이 눌린 댓글의 이벤트 타겟 값을 받아오기
+  // 3. 좋아요 버튼 클릭시 이벤트 타겟 값을 이용해서 해당 count를 받아와서 1씩 증가 및 setitem으로 카운터 값 저장
+  // 4. 눌렸을때만 임시로 텍스트를 변경해서 보여주기
+  // 5. 새로고침시에는 자동으로 업데이트된 값으로 렌더링
+
+  // 좋아요 기능
+  function likeReview() {
+    const $like_icon = document.querySelectorAll(".like_icon");
+    $like_icon.forEach((icon) => {
+      icon.addEventListener("click", (e) => {
+        selectId = e.currentTarget.dataset.id;
+        const data = JSON.parse(localStorage.getItem(selectId));
+        data.likeCount++;
+        localStorage.setItem(selectId, JSON.stringify(data));
+        getReviews();
       });
     });
   }

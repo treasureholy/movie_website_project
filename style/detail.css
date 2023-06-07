@@ -242,6 +242,7 @@ dd {
   top: 5px;
   right: 5px;
   cursor: pointer;
+  transition: scale 0.3s;
 }
 .close_icon:hover {
   scale: 1.2;
@@ -259,6 +260,26 @@ dd {
 }
 .edit_icon:hover {
   scale: 1.2;
+}
+
+.like_icon {
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+  bottom: 15px;
+  left: 100px;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+.like_icon:hover {
+  scale: 1.2;
+}
+
+.like_count {
+  position: absolute;
+  bottom: 15px;
+  left: 130px;
 }
 
 @media (max-width: 890px) {
