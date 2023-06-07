@@ -1,6 +1,8 @@
 window.addEventListener("load", () => {
+  if (sessionStorage.getItem("likes") == null) {
+    sessionStorage.setItem("likes", JSON.stringify([]));
+  }
   // 선택자 함수
-
   function els(selector, context) {
     if (typeof selector !== "string" || selector.trim().length === 0) {
       return null;
@@ -47,8 +49,15 @@ window.addEventListener("load", () => {
     .then((response) => response.json())
     .then((response) => {
       let movies = response.results;
+      let likes = JSON.parse(sessionStorage.getItem("likes"));
+      let likes_wrap = document.querySelector(".likes_wrap");
       // els(".movie_cards ul li").forEach((li) => li.remove());
-
+      likes.forEach((likeMovie) => {
+        let like_movie = movies.filter((movie) => movie.id == likeMovie);
+        console.log(like_movie);
+        let template = `<a href="detail.html?id=${likeMovie}"><li class="likeMovie">${like_movie[0].title}</li></a>`;
+        likes_wrap.insertAdjacentHTML("beforeend", template);
+      });
       for (let i = 0; i < movies.length; i++) {
         let template = `
       <li>
