@@ -2,6 +2,22 @@ window.addEventListener("load", () => {
   if (sessionStorage.getItem("likes") == null) {
     sessionStorage.setItem("likes", JSON.stringify([]));
   }
+  const handleLocationChange = (e) => {
+    const { href } = e.detail;
+    console.log(href);
+    //* 주소변경
+    window.history.pushState(undefined, "타이틀", href);
+    renderContents();
+  };
+
+  //* locationchange 이벤트리스너
+  window.addEventListener("locationchange", handleLocationChange);
+
+  // road focus
+  window.onload = function () {
+    el("#search").focus();
+  };
+
   // 선택자 함수
   function els(selector, context) {
     if (typeof selector !== "string" || selector.trim().length === 0) {
@@ -26,11 +42,6 @@ window.addEventListener("load", () => {
       : el(String(context));
     return context.querySelector(selector);
   }
-
-  // road focus
-  window.onload = function () {
-    el("#search").focus();
-  };
 
   // api
   const options = {
@@ -72,7 +83,9 @@ window.addEventListener("load", () => {
         // <div class="movie_img" style=
         // "background: url('https://image.tmdb.org/t/p/w300${movies[i].backdrop_path}') bottom center"
         // "background-size="cover"></div>
+
         el(".movie_cards ul").insertAdjacentHTML("beforeend", template);
+
         els(".movie_cards ul li")[i].addEventListener("click", () => {
           window.location.href = `detail.html?id=${movies[i].id}`;
         });
@@ -127,3 +140,11 @@ window.addEventListener("load", () => {
     search_Event();
   });
 });
+
+//페이지 상단이동
+const $topBtn = document.querySelector(".moveTopBtn");
+
+$topBtn.onclick = () => {
+  // top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};

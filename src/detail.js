@@ -75,10 +75,13 @@ const makeTemp = async () => {
         <h3 class="overview">${overview}</h3>
         <h3 class="rating"></h3>
       </div>
+      <button class="writeReviewBtn">Review</button>
   </div>
   <div class="posterWrapper">
   <img class="posterImage" src="https://image.tmdb.org/t/p/w400${poster_path}" alt="영화 포스트">
-</div>`;
+
+</div>
+`;
   document
     .getElementById("wrapperId")
     .insertAdjacentHTML("beforeend", template);
@@ -98,4 +101,18 @@ const clickHeart = async () => {
   sessionStorage.setItem("likes", JSON.stringify(likesMovie));
 };
 
-makeTemp();
+makeTemp().then(() => {
+  //댓글입력창 Review 버튼으로 감싸기
+  const $writeReviewBtn = document.querySelector(".writeReviewBtn");
+  const $commentInputContainer = document.querySelector(
+    ".comment_input_container"
+  );
+
+  $writeReviewBtn.addEventListener("click", () => {
+    if ($commentInputContainer.style.display === "none") {
+      $commentInputContainer.style.display = "block";
+    } else {
+      $commentInputContainer.style.display = "none";
+    }
+  });
+});

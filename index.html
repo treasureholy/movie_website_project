@@ -26,44 +26,49 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="section">
-      <header>
-        <h1 class="hidden">Muzi_Movies</h1>
-        <form action="#" id="search_bar">
-          <input type="text" id="search" placeholder="Search" />
-          <label class="hidden" for="serach">검색</label>
-          <button>검색</button>
-        </form>
-        <nav>
-          <ul>
-            <li><a href="#">Top Releases</a></li>
-          </ul>
-        </nav>
-        <div class="toggle_btn">
-          <img src="https://i.postimg.cc/y8rMmGz3/icons8-50.png" alt="토글 버튼" />
-        </div>
-        <div class="last_activity">
-          <ul>
-            <li>영화 평균 점수</li>
-          </ul>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="#">My movies</a></li>
-          </ul>
-        </nav>
-        <ul class="likes_wrap"></ul>
-      </header>
-      <section class="releases">
-        <h2>Top Releases</h2>
-        <div class="movie_cards">
-          <ul></ul>
-        </div>
-      </section>
+  <main>
+    <div class="container">
+      <div class="section">
+        <header>
+          <h1 class="hidden">Muzi_Movies</h1>
+          <form action="#" id="search_bar">
+            <input type="text" id="search" placeholder="Search" />
+            <label class="hidden" for="serach">검색</label>
+            <button>검색</button>
+          </form>
+          <nav>
+            <ul>
+              <li><a href="#">Top Releases</a></li>
+            </ul>
+          </nav>
+          <div class="toggle_btn">
+            <img src="https://i.postimg.cc/y8rMmGz3/icons8-50.png" alt="토글 버튼" />
+          </div>
+          <div class="last_activity">
+            <ul>
+              <li>영화 평균 점수</li>
+            </ul>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="#">My movies</a></li>
+            </ul>
+          </nav>
+          <ul class="likes_wrap"></ul>
+        </header>
+        <section class="releases">
+          <h2>Top Releases</h2>
+          <div class="movie_cards">
+            <ul></ul>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
-  <script lang="javascript" src="/src/main.js"></script>
+  </main>
+  <!-- 페이지 상단 이동 -->
+  <div class="moveTopBtn"></div>
+
+  <script lang="javascript" src="./src/main.js"></script>
 </body>
 
 </html>
