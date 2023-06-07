@@ -169,7 +169,7 @@ window.onload = function () {
         $user_name.setAttribute("readonly", true);
         document.querySelector(".write_button").textContent = "수정";
         $write_input.focus();
-        window.scrollTo(0, 0); // 스크롤이 아래 있을 때 수정창으로 바로 이동
+        window.scrollTo(0, 500); // 스크롤이 아래 있을 때 수정창으로 바로 이동
       });
     });
   }
