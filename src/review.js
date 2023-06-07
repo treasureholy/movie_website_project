@@ -1,10 +1,3 @@
-// 수정기능 만들기
-// 등록창을 이용해서 수정 버튼 클릭시 비밀번호를 제외한 내용 자동 입력
-// 등록버튼의 텍스트를 수정으로 변경
-// method 전역변수를 만들어 수정아이콘이 눌렸을 경우 edit상태로 만듬 (default 값은 submit)
-// method 전역변수 상태에 따라 등록버튼의 기능을 등록과 수정으로 분기 시킨다.
-// 그 전역변수가 edit 상태면 기존 정보를 불러와 감상평만 수정
-
 window.onload = function () {
   const $_content = document.querySelector("._content");
   const $item_wrapper = document.querySelector(".item_wrapper");
@@ -83,14 +76,14 @@ window.onload = function () {
       })
       .map((review) => {
         return `<li class="review_card">
-                    <div class="review_content">${review.text}</div>
-                    <img data-id="${review.name}"class="close_icon" src="/assets/x.png" alt="">
-                    <img data-id="${review.name}"class="edit_icon" src="/assets/edit.png" alt="">
-                    <dl class="upload_info">
-                      <dd>${review.name}</dd>
-                      <dd>${review.date}</dd>
-                    </dl>
-                  </li>`;
+                      <div class="review_content">${review.text}</div>
+                      <img data-id="${review.name}"class="close_icon" src="assets/X.png" alt="">
+                      <img data-id="${review.name}"class="edit_icon" src="assets/edit.png" alt="">
+                      <dl class="upload_info">
+                        <dd>${review.name}</dd>
+                        <dd>${review.date}</dd>
+                      </dl>
+                    </li>`;
       })
       .join("");
     deleteReview();
