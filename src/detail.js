@@ -42,14 +42,7 @@ const clickBtn = async () => {
 const makeTemp = async () => {
   const movies = await movieFetch();
   const movieData = movies[0];
-  let {
-    title,
-    genres,
-    production_companies,
-    vote_average,
-    overview,
-    poster_path,
-  } = movieData;
+  let { title, genres, production_companies, vote_average, overview, poster_path } = movieData;
 
   let template = `
   <div class="movieWrapper">
@@ -61,27 +54,24 @@ const makeTemp = async () => {
       </div>
       <div class="player">
       <button class="video" onclick="clickBtn()"><i class="fa-sharp fa-solid fa-play play-icon"></i>예고편 시청하기</button>
-      <i class="fa-regular fa-heart heart-icon${
-        likes.includes(movieId) ? " red-heart" : " "
-      }" onclick="clickHeart()"></i>
+      <i class="fa-regular fa-heart heart-icon${likes.includes(movieId) ? " red-heart" : " "}" onclick="clickHeart()"></i>
       </div>
       <div class="movieInfo">
         <h3 class="director">제작 : 
 
-        ${
-          production_companies[0] ? movieData.production_companies[0].name : ""
-        }</h3>
+        ${production_companies[0] ? movieData.production_companies[0].name : ""}</h3>
         <h3>평점 : ${vote_average.toFixed(1)}</h3>
         <h3 class="overview">${overview}</h3>
         <h3 class="rating"></h3>
       </div>
+      <button class="writeReviewBtn">Review</button>
   </div>
   <div class="posterWrapper">
   <img class="posterImage" src="https://image.tmdb.org/t/p/w400${poster_path}" alt="영화 포스트">
-</div>`;
-  document
-    .getElementById("wrapperId")
-    .insertAdjacentHTML("beforeend", template);
+
+</div>
+`;
+  document.getElementById("wrapperId").insertAdjacentHTML("beforeend", template);
 };
 
 ///하트
@@ -98,4 +88,19 @@ const clickHeart = async () => {
   sessionStorage.setItem("likes", JSON.stringify(likesMovie));
 };
 
-makeTemp();
+//댓글입력창 Review 버튼으로 감싸기
+let count = true;
+makeTemp().then(() => {
+  const $writeReviewBtn = document.querySelector(".writeReviewBtn");
+  const $commentInputContainer = document.querySelector(".comment_input_container");
+  $writeReviewBtn.addEventListener("click", () => {
+    // console.log(count);
+    if (count) {
+      $commentInputContainer.style.display = "block";
+      return (count = !count);
+    } else {
+      $commentInputContainer.style.display = "none";
+      return (count = !count);
+    }
+  });
+});

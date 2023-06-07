@@ -304,6 +304,7 @@ header .last_activity li {
     display: none;
   }
 }
+
 @media (max-width: 700px) {
   .releases .movie_cards ul {
     display: -webkit-box;
@@ -352,4 +353,28 @@ header .last_activity li {
 .likeMovie {
   border: 1px solid gainsboro;
   margin-bottom: 10px;
+}
+
+/* [페이지 상단으로 이동] */
+.moveTopBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background-image: url("../assets/화살표.png");
+  background-size: cover;
+  cursor: pointer;
+}
+
+/* [페이지 상단으로 이동] */
+.moveTopBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background-image: url("../assets/화살표.png");
+  background-size: cover;
+  cursor: pointer;
 }
