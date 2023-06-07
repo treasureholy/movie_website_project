@@ -343,3 +343,15 @@ header .last_activity li {
     line-height: 1.5;
   }
 }
+
+/* [페이지 상단으로 이동] */
+.moveTopBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background-image: url("./화살표.png");
+  background-size: cover;
+  cursor: pointer;
+}
