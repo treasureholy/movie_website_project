@@ -189,20 +189,6 @@ window.onload = function () {
   }
 
   getReviews();
-
-  //댓글입력창 Review 버튼으로 감싸기
-  const $writeReviewBtn = document.querySelector(".writeReviewBtn");
-  const $commentInputContainer = document.querySelector(
-    ".comment_input_container"
-  );
-
-  $writeReviewBtn.addEventListener("click", () => {
-    if ($commentInputContainer.style.display === "none") {
-      $commentInputContainer.style.display = "block";
-    } else {
-      $commentInputContainer.style.display = "none";
-    }
-  });
 };
 
 //페이지 상단이동

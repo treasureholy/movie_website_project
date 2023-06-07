@@ -75,6 +75,7 @@ body {
   cursor: pointer;
 }
 .movieWrapper {
+  position: relative;
   width: 700px;
   margin-right: 205px;
 }
@@ -416,9 +417,11 @@ dd {
   display: none;
 }
 .writeReviewBtn {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
   width: 100px;
   height: 50px;
   font-size: 20px;
   border-radius: 10px;
-  margin-left: 100px;
 }
