@@ -417,9 +417,7 @@ dd {
   display: none;
 }
 .writeReviewBtn {
-  position: absolute;
-  bottom: -50px;
-  left: 0;
+  margin-top: 20px;
   width: 100px;
   height: 50px;
   font-size: 20px;
