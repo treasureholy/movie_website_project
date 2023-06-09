@@ -15,11 +15,10 @@ const options = {
 
 // Fetch
 const movieFetch = async () => {
-  const movieResponse = await fetch(url, options);
-  const movieData = await movieResponse.json();
+  const movieResponse = await fetch(url, options).then((res) => res.json());
   const videoResponse = await fetch(`${url}/videos`, options);
   const videoData = await videoResponse.json();
-  return [movieData, videoData];
+  return [movieResponse, videoData];
 };
 
 //trailer
