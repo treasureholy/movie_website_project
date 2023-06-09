@@ -13,6 +13,7 @@ window.onload = function () {
   let selectId = null;
   let method = "submit";
   let sortWay = "like";
+
   function initInput() {
     $write_input.value = null;
     $user_name.value = null;
@@ -39,7 +40,8 @@ window.onload = function () {
         let name = $user_name.value;
         let password = $user_password.value;
 
-        if (password.length < 4) return alert("비밀번호는 최소 4글자가 되어야 합니다.");
+        if (password.length < 4)
+          return alert("비밀번호는 최소 4글자가 되어야 합니다.");
 
         const obj = {
           likeCount: 0,
@@ -67,6 +69,7 @@ window.onload = function () {
           // 수정 후 등록 창으로 변환
           method = "submit";
           document.querySelector(".write_button").textContent = "등록";
+          $user_name.removeAttribute("readonly");
           initInput();
           getReviews();
         } else {
@@ -137,39 +140,58 @@ window.onload = function () {
   }
 
   // 삭제 기능
+  function closeFn() {
+    document.querySelector(".del-user__pass").classList.add("hide");
+  }
+
   function deleteReview() {
     const $close_icon = document.querySelectorAll(".close_icon");
 
+    const $delUserPass = document.querySelector(".del-user__pass");
+    const deleteBtn = document.querySelector(".deleteBtn");
+
     $close_icon.forEach((icon) => {
       icon.addEventListener("click", (e) => {
-        const selectId = e.currentTarget.dataset.id;
+        $delUserPass.classList.remove("hide");
+        selectId = e.currentTarget.dataset.id;
 
-        // 모달창 이벤트
-        document.querySelector(".del-user__pass").classList.remove("dn");
-        document.querySelector(".material-symbols-outlined").addEventListener("click", closeFn);
-        document.querySelector(".modal_pass").addEventListener("click", closeFn);
-        document.querySelector("#del-user__form").addEventListener("click", () => {
+        document
+          .querySelector(".material-symbols-outlined")
+          .addEventListener("click", closeFn);
+
+        document
+          .querySelector(".modal_pass")
+          .addEventListener("click", closeFn);
+
+        deleteBtn.addEventListener("click", () => {
+          const data = JSON.parse(localStorage.getItem(selectId));
           const del__userPass = document.querySelector("#user-del__pass");
 
-          // 댓글 삭제 분기
+          if (data === null) return 0;
+
           if (data.password === del__userPass.value) {
-            confirm("정말로 삭제하시겠습니까?") ? localStorage.removeItem(selectId) : 0;
-            document.querySelector(".del-user__pass").classList.add("dn");
-            getReviews();
-            alert("삭제 되었습니다 !");
+            if (confirm("정말로 삭제하시겠습니까?")) {
+              localStorage.removeItem(selectId);
+              alert("삭제되었습니다.");
+              getReviews();
+            } else {
+              alert("취소되었습니다.");
+            }
+            $delUserPass.classList.add("hide");
             del__userPass.value = "";
-            location.reload();
-          } else if (data.password !== del__userPass.value && del__userPass.value.length !== 0) {
+          } else if (
+            data.password !== del__userPass.value ||
+            del__userPass.value.length !== 0
+          ) {
+
+            del__userPass.value = "";
             alert("비밀번호가 틀립니다.");
-            del__userPass.value = "";
           }
         });
-        const data = JSON.parse(localStorage.getItem(selectId));
-        console.log(e.target);
-        console.log(e.target.id);
       });
     });
   }
+
   // 수정 기능
   function editReview() {
     const $edit_icon = document.querySelectorAll(".edit_icon");

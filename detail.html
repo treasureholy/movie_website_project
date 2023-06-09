@@ -1,68 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="shortcut icon" href="./assets/favicon.ico" />
-    <link rel="stylesheet" href="./style/detail.css" />
-    <script src="https://kit.fontawesome.com/35e904484f.js" crossorigin="anonymous"></script>
-    <title>MovieDetail</title>
-  </head>
 
-  <body>
-    <div class="main">
-      <div class="logo">
-        <a href="./index.html"
-          ><button id="homeBtn">
-            <h2>조촐한 영화관</h2>
-          </button></a
-        >
-      </div>
-      <div class="wrapper" id="wrapperId"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="shortcut icon" href="./assets/favicon.ico" />
+  <link rel="stylesheet" href="./style/detail.css" />
+  <script src="https://kit.fontawesome.com/35e904484f.js" crossorigin="anonymous"></script>
+  <title>MovieDetail</title>
+</head>
 
-      <!-- 댓글입력창 Review 버튼으로 감싸기 -->
-      <div class="comment_input_container">
-        <section class="review_section">
-          <form class="_content">
-            <div class="area_input_box">
-              <input type="text" class="write_input" placeholder="감상평을 등록해주세요." required />
-              <button type="submit" class="write_button">등록</button>
-              <div class="user_info">
-                <input type="text" class="user_name" placeholder="닉네임" required />
-                <input type="password" class="user_password" placeholder="비밀번호" required />
-              </div>
+<body>
+  <div class="main">
+    <div class="logo">
+      <a href="./index.html"><button id="homeBtn">
+          <h2>조촐한 영화관</h2>
+        </button></a>
+    </div>
+    <div class="wrapper" id="wrapperId"></div>
+
+    <!-- 댓글입력창 Review 버튼으로 감싸기 -->
+    <div class="comment_input_container">
+      <section class="review_section">
+        <form class="_content">
+          <div class="area_input_box">
+            <input type="text" class="write_input" placeholder="감상평을 등록해주세요." required />
+            <button type="submit" class="write_button">등록</button>
+            <div class="user_info">
+              <input type="text" class="user_name" placeholder="닉네임" required />
+              <input type="password" class="user_password" placeholder="비밀번호" required />
             </div>
-          </form>
-          <div class="review_list">
-            <div class="sort">
-              <button class="btn like_sort">인기순</button>
-              <button class="btn time_sort">최신순</button>
-            </div>
-            <ul class="item_wrapper"></ul>
           </div>
-        </section>
-      </div>
+        </form>
+        <div class="review_list">
+          <div class="sort">
+            <button class="btn like_sort">인기순</button>
+            <button class="btn time_sort">최신순</button>
+          </div>
+          <ul class="item_wrapper"></ul>
+        </div>
+      </section>
     </div>
-    <!-- 페이지 상단 이동 -->
-    <div class="moveTopBtn2"></div>
-    <!-- 삭제 모달창 -->
-    <div class="del-user__pass dn">
-      <div id="del-user__form" class="df">
-        <label for="user-del__pass" class="user-del__pass">비밀번호</label>
-        <input type="password" id="user-del__pass" name="user-del__pass" />
-        <button>입력</button>
-      </div>
-      <div class="modal_pass"></div>
-      <div class="close-btn">
-        <!-- <img src="https://cdn-icons-png.flaticon.com/512/70/70287.png" alt="삭제 버튼"> -->
-        <button class="del-user__btn">
-          <span class="material-symbols-outlined"> close </span>
-        </button>
-      </div>
+  </div>
+  <!-- 페이지 상단 이동 -->
+  <div class="moveTopBtn2"></div>
+  <!-- 삭제 모달창 -->
+  <div class="del-user__pass hide">
+    <div id="del-user__form" class="df">
+      <label for="user-del__pass" class="user-del__pass">비밀번호</label>
+      <input type="password" id="user-del__pass" name="user-del__pass" />
+      <button class="deleteBtn">입력</button>
     </div>
-    <script src="./src/detail.js"></script>
-    <script src="./src/review.js"></script>
-  </body>
+    <div class="modal_pass"></div>
+    <div class="close-btn">
+      <!-- <img src="https://cdn-icons-png.flaticon.com/512/70/70287.png" alt="삭제 버튼"> -->
+      <button class="del-user__btn">
+        <span class="material-symbols-outlined"> close </span>
+      </button>
+    </div>
+  </div>
+  <script src="./src/detail.js"></script>
+  <script src="./src/review.js"></script>
+</body>
+
 </html>
