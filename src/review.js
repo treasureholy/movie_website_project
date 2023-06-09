@@ -69,6 +69,7 @@ window.onload = function () {
           // 수정 후 등록 창으로 변환
           method = "submit";
           document.querySelector(".write_button").textContent = "등록";
+          $user_name.removeAttribute("readonly");
           initInput();
           getReviews();
         } else {
@@ -140,7 +141,7 @@ window.onload = function () {
 
   // 삭제 기능
   function closeFn() {
-    document.querySelector(".del-user__pass").classList.add("dn");
+    document.querySelector(".del-user__pass").classList.add("hide");
   }
 
   function deleteReview() {
@@ -151,7 +152,8 @@ window.onload = function () {
     $close_icon.forEach((icon) => {
       icon.addEventListener("click", (e) => {
         $delUserPass.classList.remove("hide");
-        const selectId = e.currentTarget.dataset.id;
+        selectId = e.currentTarget.dataset.id;
+
         document
           .querySelector(".material-symbols-outlined")
           .addEventListener("click", closeFn);
@@ -163,22 +165,24 @@ window.onload = function () {
         deleteBtn.addEventListener("click", () => {
           const data = JSON.parse(localStorage.getItem(selectId));
           const del__userPass = document.querySelector("#user-del__pass");
+
+          if (data === null) return 0;
           if (data.password === del__userPass.value) {
             if (confirm("정말로 삭제하시겠습니까?")) {
               localStorage.removeItem(selectId);
               alert("삭제되었습니다.");
+              getReviews();
             } else {
               alert("취소되었습니다.");
             }
             $delUserPass.classList.add("hide");
-            del__userPass.value = null;
-            getReviews();
+            del__userPass.value = "";
           } else if (
-            data.password !== del__userPass.value &&
+            data.password !== del__userPass.value ||
             del__userPass.value.length !== 0
           ) {
+            del__userPass.value = "";
             alert("비밀번호가 틀립니다.");
-            del__userPass.value = null;
           }
         });
       });
