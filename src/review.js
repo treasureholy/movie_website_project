@@ -32,45 +32,51 @@ window.onload = function () {
   // 댓글 입력창 기능 구현
   $_content.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (method === "submit") {
-      // 등록일 때
-      const date = new Date();
-      let text = $write_input.value;
-      let name = $user_name.value;
-      let password = $user_password.value;
-
-      if (password.length < 4)
-        return alert("비밀번호는 최소 4글자가 되어야 합니다.");
-
-      const obj = {
-        likeCount: 0,
-        name,
-        text,
-        password,
-        date: date.toLocaleString("ko-kr"),
-        movieId,
-      };
-      const objString = JSON.stringify(obj);
-      localStorage.setItem(`${name}`, objString);
-      getReviews();
-      initInput();
-    } else if (method === "edit") {
-      // 수정일 때
-      const data = JSON.parse(localStorage.getItem(selectId));
-      if (data.password === $user_password.value) {
+    switch (method) {
+      case "submit": // 등록일 때
+        const date = new Date();
         let text = $write_input.value;
-        data.text = text;
-        localStorage.setItem(selectId, JSON.stringify(data));
-        alert("수정이 완료되었습니다.");
+        let name = $user_name.value;
+        let password = $user_password.value;
 
-        // 수정 후 등록 창으로 변환
-        method = "submit";
-        document.querySelector(".write_button").textContent = "등록";
-        initInput();
+        if (password.length < 4)
+          return alert("비밀번호는 최소 4글자가 되어야 합니다.");
+
+        const obj = {
+          likeCount: 0,
+          name,
+          text,
+          password,
+          date: date.toLocaleString("ko-kr"),
+          movieId,
+        };
+        const objString = JSON.stringify(obj);
+        localStorage.setItem(`${name}`, objString);
         getReviews();
-      } else {
-        return alert("비밀번호가 일치하지 않습니다.");
-      }
+        initInput();
+
+        break;
+
+      case "edit": // 수정일 때
+        const data = JSON.parse(localStorage.getItem(selectId));
+        if (data.password === $user_password.value) {
+          let text = $write_input.value;
+          data.text = text;
+          localStorage.setItem(selectId, JSON.stringify(data));
+          alert("수정이 완료되었습니다.");
+
+          // 수정 후 등록 창으로 변환
+          method = "submit";
+          document.querySelector(".write_button").textContent = "등록";
+          initInput();
+          getReviews();
+        } else {
+          return alert("비밀번호가 일치하지 않습니다.");
+        }
+        break;
+
+      default:
+        break;
     }
   });
 
