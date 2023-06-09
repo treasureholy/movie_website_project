@@ -147,6 +147,33 @@ window.onload = function () {
       icon.addEventListener("click", (e) => {
         const selectId = e.currentTarget.dataset.id;
         const del__userPass = document.querySelector("#user-del__pass");
+
+    function closeFn() {
+      document.querySelector(".del-user__pass").classList.add("dn");
+    }
+    $close_icon.forEach((icon) => {
+      icon.addEventListener("click", (e) => {
+        const selectId = e.currentTarget.dataset.id;
+        // const deletePw = prompt("삭제를 원하시면 해당 비밀번호를 입력하세요", "");
+
+        document.querySelector(".del-user__pass").classList.remove("dn");
+        document.querySelector(".material-symbols-outlined").addEventListener("click", closeFn);
+        document.querySelector(".modal_pass").addEventListener("click", closeFn);
+        document.querySelector("#del-user__form").addEventListener("click", () => {
+          const del__userPass = document.querySelector("#user-del__pass");
+
+          if (data.password === del__userPass.value) {
+            confirm("정말로 삭제하시겠습니까?") ? localStorage.removeItem(selectId) : 0;
+            document.querySelector(".del-user__pass").classList.add("dn");
+            getReviews();
+            alert("삭제 되었습니다 !");
+            del__userPass.value = "";
+            // location.reload();
+          } else if (data.password !== del__userPass.value && del__userPass.value.length !== 0) {
+            alert("비밀번호가 틀립니다.");
+            del__userPass.value = "";
+          }
+        });
         const data = JSON.parse(localStorage.getItem(selectId));
 
         $delUserPass.classList.remove("hide");
