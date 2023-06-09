@@ -1,6 +1,7 @@
 :root {
   color: #fff;
   font-family: "Noto Sans KR", sans-serif;
+  background: #1a1c20;
 }
 
 .hidden {
@@ -127,10 +128,11 @@ header .last_activity li {
 }
 
 .releases {
+  width: 900px;
   -webkit-box-flex: 1;
   -ms-flex: 1 0 100%;
   flex: 1 0 100%;
-  max-width: 900px;
+  /* max-width: 900px; */
   padding-top: 72px;
   padding-left: 22px;
   background: #1a1c20;
@@ -278,6 +280,7 @@ header .last_activity li {
     transition: none;
   }
   .releases {
+    width: 100%;
     padding: 0;
   }
   .releases h2 {
@@ -306,6 +309,9 @@ header .last_activity li {
 }
 
 @media (max-width: 700px) {
+  .releases {
+    width: auto;
+  }
   .releases .movie_cards ul {
     display: -webkit-box;
     display: -ms-flexbox;
