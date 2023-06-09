@@ -139,30 +139,26 @@ window.onload = function () {
   // 삭제 기능
   function deleteReview() {
     const $close_icon = document.querySelectorAll(".close_icon");
-    // $close_icon.forEach((e) => {
-    //   console.log(1);
-    // });
-    function closeFn() {
-      document.querySelector(".del-user__pass").classList.add("dn");
-    }
+
     $close_icon.forEach((icon) => {
       icon.addEventListener("click", (e) => {
         const selectId = e.currentTarget.dataset.id;
-        // const deletePw = prompt("삭제를 원하시면 해당 비밀번호를 입력하세요", "");
 
+        // 모달창 이벤트
         document.querySelector(".del-user__pass").classList.remove("dn");
         document.querySelector(".material-symbols-outlined").addEventListener("click", closeFn);
         document.querySelector(".modal_pass").addEventListener("click", closeFn);
         document.querySelector("#del-user__form").addEventListener("click", () => {
           const del__userPass = document.querySelector("#user-del__pass");
 
+          // 댓글 삭제 분기
           if (data.password === del__userPass.value) {
             confirm("정말로 삭제하시겠습니까?") ? localStorage.removeItem(selectId) : 0;
             document.querySelector(".del-user__pass").classList.add("dn");
             getReviews();
             alert("삭제 되었습니다 !");
             del__userPass.value = "";
-            // location.reload();
+            location.reload();
           } else if (data.password !== del__userPass.value && del__userPass.value.length !== 0) {
             alert("비밀번호가 틀립니다.");
             del__userPass.value = "";
@@ -215,3 +211,8 @@ $topBtn.onclick = () => {
   // top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+// 모달창 닫기
+function closeFn() {
+  document.querySelector(".del-user__pass").classList.add("dn");
+}
