@@ -6,6 +6,8 @@ input {
 }
 
 .df {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .dn {
@@ -16,6 +18,7 @@ input {
   color: white;
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -25,6 +28,8 @@ body {
 
 .main {
   position: relative;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
 }
@@ -38,16 +43,22 @@ body {
   padding: 5px;
 }
 .wrapper {
+  -ms-flex-wrap: no-wrap;
   flex-wrap: no-wrap;
   position: relative;
   font-family: "KOTRAHOPE";
   font-size: large;
   margin: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .logo {
   left: -40px;
+  -ms-flex-preferred-size: 1305px;
   flex-basis: 1305px;
 }
 .title {
@@ -121,7 +132,11 @@ body {
 }
 
 .player {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -135,17 +150,32 @@ body {
 
 .review_section {
   margin-left: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: start;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 ._content {
   border-top: 1px solid #666;
   padding-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   width: 100%;
 }
@@ -153,12 +183,18 @@ body {
 .area_input_box {
   width: 600px;
   margin: 0 auto;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
 .write_input {
+  -webkit-box-flex: 2;
+  -ms-flex-positive: 2;
   flex-grow: 2;
   padding: 10px;
   border: 1px solid #666;
@@ -166,7 +202,11 @@ body {
 }
 
 .user_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   margin-top: 10px;
   height: 30px;
@@ -175,6 +215,7 @@ body {
   .user_name,
   .user_password {
     padding-left: 10px;
+    -ms-flex-preferred-size: 290px;
     flex-basis: 290px;
     border: none;
     border: 1px solid #666;
@@ -191,6 +232,8 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.05rem;
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 .write_button:hover {
@@ -213,6 +256,7 @@ body {
   margin: 0 auto;
   padding: 16px;
   border-radius: 5px;
+  -webkit-box-shadow: 0 2px 4px rgba(243, 238, 238, 0.632);
   box-shadow: 0 2px 4px rgba(243, 238, 238, 0.632);
 }
 
@@ -223,8 +267,12 @@ body {
 }
 
 .upload_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 20px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   color: #999;
   font-size: 0.8em;
@@ -248,6 +296,8 @@ dd {
   top: 5px;
   right: 5px;
   cursor: pointer;
+  -webkit-transition: scale 0.3s;
+  -o-transition: scale 0.3s;
   transition: scale 0.3s;
 }
 .close_icon:hover {
@@ -262,6 +312,8 @@ dd {
   top: 5px;
   right: 30px;
   cursor: pointer;
+  -webkit-transition: scale 0.3s;
+  -o-transition: scale 0.3s;
   transition: scale 0.3s;
 }
 .edit_icon:hover {
@@ -276,6 +328,8 @@ dd {
   bottom: 15px;
   left: 100px;
   cursor: pointer;
+  -webkit-transition: scale 0.3s;
+  -o-transition: scale 0.3s;
   transition: scale 0.3s;
 }
 .like_icon:hover {
@@ -299,6 +353,7 @@ dd {
   margin: 0 10px;
   border: none;
   border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(243, 238, 238, 0.632);
   box-shadow: 0 1px 2px rgba(243, 238, 238, 0.632);
 }
 
@@ -315,9 +370,13 @@ dd {
     margin-right: 0;
   }
   .wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
   .overview {
+    -o-text-overflow: clip;
     text-overflow: clip;
   }
   .title h1 {
@@ -327,8 +386,14 @@ dd {
     margin-bottom: 20px;
   }
   .genre {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 100px;
     font-size: 12px;
@@ -346,7 +411,11 @@ dd {
     margin: 0 5%;
   }
   .posterWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
   .posterImage {
@@ -371,6 +440,7 @@ dd {
   .video {
     width: 100%;
     margin: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
   .player {
@@ -398,6 +468,7 @@ dd {
   }
 
   .user_name {
+    -ms-flex-preferred-size: 100px;
     flex-basis: 100px;
   }
 }
@@ -447,10 +518,13 @@ dd {
   position: fixed;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   z-index: 10;
   padding: 40px;
-  /* justify-content: center; */
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -490,8 +564,14 @@ dd {
 .close-btn span {
   width: inherit;
   height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   font-size: 60px;
   cursor: pointer;
