@@ -6,7 +6,6 @@ window.onload = function () {
   const $user_password = document.querySelector(".user_password");
   const $like_sort = document.querySelector(".like_sort");
   const $time_sort = document.querySelector(".time_sort");
-  const $delUserPass = document.querySelector(".del-user__pass");
 
   let urlParams = new URLSearchParams(window.location.search);
   let movieId = urlParams.get("id");
@@ -140,67 +139,52 @@ window.onload = function () {
   }
 
   // 삭제 기능
+  function closeFn() {
+    document.querySelector(".del-user__pass").classList.add("dn");
+  }
+
   function deleteReview() {
     const $close_icon = document.querySelectorAll(".close_icon");
+    const $delUserPass = document.querySelector(".del-user__pass");
+    const deleteBtn = document.querySelector(".deleteBtn");
 
     $close_icon.forEach((icon) => {
       icon.addEventListener("click", (e) => {
+        $delUserPass.classList.remove("hide");
         const selectId = e.currentTarget.dataset.id;
-        const del__userPass = document.querySelector("#user-del__pass");
+        document
+          .querySelector(".material-symbols-outlined")
+          .addEventListener("click", closeFn);
 
-    function closeFn() {
-      document.querySelector(".del-user__pass").classList.add("dn");
-    }
-    $close_icon.forEach((icon) => {
-      icon.addEventListener("click", (e) => {
-        const selectId = e.currentTarget.dataset.id;
-        // const deletePw = prompt("삭제를 원하시면 해당 비밀번호를 입력하세요", "");
+        document
+          .querySelector(".modal_pass")
+          .addEventListener("click", closeFn);
 
-        document.querySelector(".del-user__pass").classList.remove("dn");
-        document.querySelector(".material-symbols-outlined").addEventListener("click", closeFn);
-        document.querySelector(".modal_pass").addEventListener("click", closeFn);
-        document.querySelector("#del-user__form").addEventListener("click", () => {
+        deleteBtn.addEventListener("click", () => {
+          const data = JSON.parse(localStorage.getItem(selectId));
           const del__userPass = document.querySelector("#user-del__pass");
-
           if (data.password === del__userPass.value) {
-            confirm("정말로 삭제하시겠습니까?") ? localStorage.removeItem(selectId) : 0;
-            document.querySelector(".del-user__pass").classList.add("dn");
+            if (confirm("정말로 삭제하시겠습니까?")) {
+              localStorage.removeItem(selectId);
+              alert("삭제되었습니다.");
+            } else {
+              alert("취소되었습니다.");
+            }
+            $delUserPass.classList.add("hide");
+            del__userPass.value = null;
             getReviews();
-            alert("삭제 되었습니다 !");
-            del__userPass.value = "";
-            // location.reload();
-          } else if (data.password !== del__userPass.value && del__userPass.value.length !== 0) {
+          } else if (
+            data.password !== del__userPass.value &&
+            del__userPass.value.length !== 0
+          ) {
             alert("비밀번호가 틀립니다.");
-            del__userPass.value = "";
+            del__userPass.value = null;
           }
         });
-        const data = JSON.parse(localStorage.getItem(selectId));
-
-        $delUserPass.classList.remove("hide");
-        del__userPass.focus();
-        document
-          .querySelector("#del-user__form")
-          .addEventListener("click", () => {
-            if (data.password === del__userPass.value) {
-              confirm("정말로 삭제하시겠습니까?")
-                ? localStorage.removeItem(selectId)
-                : 0;
-              $delUserPass.classList.add("hide");
-              alert("삭제 되었습니다 !");
-              del__userPass.value = "";
-              getReviews();
-            } else if (
-              data.password !== del__userPass.value &&
-              del__userPass.value.length !== 0
-            ) {
-              alert("비밀번호가 틀립니다.");
-              del__userPass.value = "";
-              del__userPass.focus();
-            }
-          });
       });
     });
   }
+
   // 수정 기능
   function editReview() {
     const $edit_icon = document.querySelectorAll(".edit_icon");
