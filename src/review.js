@@ -142,13 +142,17 @@ window.onload = function () {
     // $close_icon.forEach((e) => {
     //   console.log(1);
     // });
-
+    function closeFn() {
+      document.querySelector(".del-user__pass").classList.add("dn");
+    }
     $close_icon.forEach((icon) => {
       icon.addEventListener("click", (e) => {
         const selectId = e.currentTarget.dataset.id;
         // const deletePw = prompt("삭제를 원하시면 해당 비밀번호를 입력하세요", "");
 
         document.querySelector(".del-user__pass").classList.remove("dn");
+        document.querySelector(".material-symbols-outlined").addEventListener("click", closeFn);
+        document.querySelector(".modal_pass").addEventListener("click", closeFn);
         document.querySelector("#del-user__form").addEventListener("click", () => {
           const del__userPass = document.querySelector("#user-del__pass");
 
