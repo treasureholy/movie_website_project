@@ -146,6 +146,7 @@ window.onload = function () {
 
   function deleteReview() {
     const $close_icon = document.querySelectorAll(".close_icon");
+
     const $delUserPass = document.querySelector(".del-user__pass");
     const deleteBtn = document.querySelector(".deleteBtn");
 
@@ -167,6 +168,7 @@ window.onload = function () {
           const del__userPass = document.querySelector("#user-del__pass");
 
           if (data === null) return 0;
+
           if (data.password === del__userPass.value) {
             if (confirm("정말로 삭제하시겠습니까?")) {
               localStorage.removeItem(selectId);
@@ -181,6 +183,7 @@ window.onload = function () {
             data.password !== del__userPass.value ||
             del__userPass.value.length !== 0
           ) {
+
             del__userPass.value = "";
             alert("비밀번호가 틀립니다.");
           }
@@ -230,3 +233,8 @@ $topBtn.onclick = () => {
   // top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+// 모달창 닫기
+function closeFn() {
+  document.querySelector(".del-user__pass").classList.add("dn");
+}
