@@ -5,6 +5,12 @@ input {
   outline: 1px solid #c2c2c2;
 }
 
+.df {
+  display: flex;
+}
+.dn {
+  display: none;
+}
 * {
   background: #1a1c20;
   color: white;
@@ -426,4 +432,67 @@ dd {
   font-size: 20px;
   font-weight: 600;
   border-radius: 10px;
+}
+
+.modal_pass {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#del-user__form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 40px;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.user-del__pass {
+  min-width: 74px;
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+#user-del__pass {
+  display: block;
+  height: 30px;
+  padding: 4px 4px 4px 10px;
+  margin-right: 15px;
+}
+
+#del-user__form > button {
+  min-width: 39px;
+  display: block;
+  border: 1px solid #666;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  /* background: #fff; */
+  width: 50px;
+  height: 50px;
+}
+.close-btn > button {
+  border: none;
+}
+
+.close-btn span {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  cursor: pointer;
 }

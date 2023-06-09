@@ -39,8 +39,7 @@ window.onload = function () {
         let name = $user_name.value;
         let password = $user_password.value;
 
-        if (password.length < 4)
-          return alert("비밀번호는 최소 4글자가 되어야 합니다.");
+        if (password.length < 4) return alert("비밀번호는 최소 4글자가 되어야 합니다.");
 
         const obj = {
           likeCount: 0,
@@ -140,24 +139,34 @@ window.onload = function () {
   // 삭제 기능
   function deleteReview() {
     const $close_icon = document.querySelectorAll(".close_icon");
+    // $close_icon.forEach((e) => {
+    //   console.log(1);
+    // });
 
     $close_icon.forEach((icon) => {
       icon.addEventListener("click", (e) => {
         const selectId = e.currentTarget.dataset.id;
-        const deletePw = prompt(
-          "삭제를 원하시면 해당 비밀번호를 입력하세요",
-          ""
-        );
+        // const deletePw = prompt("삭제를 원하시면 해당 비밀번호를 입력하세요", "");
 
+        document.querySelector(".del-user__pass").classList.remove("dn");
+        document.querySelector("#del-user__form").addEventListener("click", () => {
+          const del__userPass = document.querySelector("#user-del__pass");
+
+          if (data.password === del__userPass.value) {
+            confirm("정말로 삭제하시겠습니까?") ? localStorage.removeItem(selectId) : 0;
+            document.querySelector(".del-user__pass").classList.add("dn");
+            getReviews();
+            alert("삭제 되었습니다 !");
+            del__userPass.value = "";
+            // location.reload();
+          } else if (data.password !== del__userPass.value && del__userPass.value.length !== 0) {
+            alert("비밀번호가 틀립니다.");
+            del__userPass.value = "";
+          }
+        });
         const data = JSON.parse(localStorage.getItem(selectId));
-        if (data.password === deletePw) {
-          confirm("정말로 삭제하시겠습니까?")
-            ? localStorage.removeItem(selectId)
-            : 0;
-          getReviews();
-        } else if (data.password !== deletePw && deletePw.length !== 0) {
-          alert("비밀번호가 틀립니다.");
-        }
+        console.log(e.target);
+        console.log(e.target.id);
       });
     });
   }
