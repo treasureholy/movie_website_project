@@ -2,6 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get("id");
 const movieContainer = document.querySelector(".movie-container");
 const url = `https://api.themoviedb.org/3/movie/${movieId}`;
+const videoUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos`;
 const likes = JSON.parse(sessionStorage.getItem("likes"));
 
 const options = {
@@ -13,20 +14,19 @@ const options = {
   },
 };
 
-// Fetch
+// 영화 정보 Fetch
 const movieFetch = async () => {
   const movieResponse = await fetch(url, options).then((res) => res.json());
-  const videoResponse = await fetch(`${url}/videos`, options);
-  const videoData = await videoResponse.json();
-  return [movieResponse, videoData];
+  const videoResponse = await fetch(videoUrl, options).then((res) =>
+    res.json()
+  );
+  return [movieResponse, videoResponse];
 };
 
-//trailer
-
+//trailer 클릭
 const clickBtn = async () => {
   const poster = document.querySelector(".posterWrapper");
-  const videos = await movieFetch();
-  const videoData = videos[1];
+  const videoData = await movieFetch().then((res) => res[1]);
   const trailer = videoData.results.find((video) => video.type == "Trailer");
   if (trailer) {
     const videoKey = trailer.key;
@@ -37,10 +37,9 @@ const clickBtn = async () => {
   }
 };
 
-//HTMl
+//HTMl생성
 const makeTemp = async () => {
-  const movies = await movieFetch();
-  const movieData = movies[0];
+  const movieData = await movieFetch().then((res) => res[0]);
   let {
     title,
     genres,
@@ -86,8 +85,8 @@ const makeTemp = async () => {
     .insertAdjacentHTML("beforeend", template);
 };
 
-///하트
-const clickHeart = async () => {
+/// 하트클릭
+const clickHeart = () => {
   let likesMovie = JSON.parse(sessionStorage.getItem("likes"));
   let heartIcon = document.querySelector(".heart-icon");
   if (likesMovie.includes(movieId)) {
@@ -112,11 +111,10 @@ makeTemp().then(() => {
     if (count) {
       $commentInputContainer.style.display = "block";
       window.scrollTo({ top: 300, behavior: "smooth" });
-      return (count = !count);
     } else {
       $commentInputContainer.style.display = "none";
       window.scrollTo({ top: 0, behavior: "smooth" });
-      return (count = !count);
     }
+    return (count = !count);
   });
 });
